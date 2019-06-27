@@ -8,10 +8,31 @@ for(let i = 0; i < 6; i++) {
 const holes = document.querySelectorAll('.hole')
 const scoreBoard = document.querySelector('.score')
 const moles = document.querySelectorAll('.mole')
-
+var lastHole; //creating a global variable
 
 holes.forEach((hole) => {
     let moleDiv = document.createElement('div')
     moleDiv.classList.add('mole')
     hole.appendChild(moleDiv)
 })
+
+function randomTime (min, max) {
+    //gives a random number based off arguments passed in
+    return Math.random() * (max - min) + min;
+}
+
+function randomHole (holes) { //get me a random DOM hole element
+    let index = Math.floor(Math.random() * holes.length) //rounds down the random number we got from multiply math.random by the array.length
+    let hole = holes[index]
+    if (hole === lastHole) {
+        return randomHole(holes) //stop and rerun the function if there are repeats
+    }
+    lastHole = hole
+    return hole
+}
+
+function popUp () {
+    let time = randomTime(200, 1000)
+    let hole = randomHole(holes)
+    hole.classList.add('up')
+}
