@@ -6,6 +6,9 @@ for(let i = 0; i < 6; i++) {
 }
 
 const holes = document.querySelectorAll('.hole')
+const scoreBoard = document.querySelector('.score')
+const moles = document.querySelectorAll('.mole')
+
 
 holes.forEach((hole) => {
     let moleDiv = document.createElement('div')
