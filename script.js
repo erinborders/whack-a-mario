@@ -9,6 +9,7 @@ const holes = document.querySelectorAll('.hole')
 const scoreBoard = document.querySelector('.score')
 const moles = document.querySelectorAll('.mole')
 var lastHole; //creating a global variable
+var timeUp = false;
 
 holes.forEach((hole) => {
     let moleDiv = document.createElement('div')
@@ -35,4 +36,15 @@ function popUp () {
     let time = randomTime(200, 1000)
     let hole = randomHole(holes)
     hole.classList.add('up')
+    setTimeout(() => {
+        hole.classList.remove('up')
+        if (!timeUp) popUp()
+    }, time)
+}
+
+function startGame () {
+    scoreBoard.textContent = 0
+    timeUp = false
+    popUp()
+    setTimeout(() => timeUp = true, 10000)
 }
