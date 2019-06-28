@@ -37,7 +37,7 @@ function randomHole (holes) { //get me a random DOM hole element
 }
 
 function popUp () {
-    let time = randomTime(200, 1000)
+    let time = randomTime(200, 2000)
     let hole = randomHole(holes)
     hole.classList.add('up')
     setTimeout(() => {
