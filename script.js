@@ -11,8 +11,9 @@ const moles = document.querySelectorAll('.mole')
 var lastHole; //creating a global variable
 var timeUp = false;
 const startButton = document.querySelector('#start')
+let score = 0
 
-startButton.addEventListener('click', startGame())
+startButton.addEventListener('click', startGame)
 
 holes.forEach((hole) => {
     let moleDiv = document.createElement('div')
@@ -48,7 +49,16 @@ function popUp () {
 function startGame () {
     scoreBoard.textContent = 0
     timeUp = false
+    score = 0
     popUp()
     setTimeout(() => timeUp = true, 10000)
 }
 
+function whack (evt) {
+    if(!evt.isTrusted) return //if someone's cheating and not actually clicking
+    score++
+    this.classList.remove('up')
+    scoreBoard.textContent = score
+}
+
+moles.forEach(mole => mole.addEventListener('click', whack))
