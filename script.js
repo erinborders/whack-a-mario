@@ -10,6 +10,9 @@ const scoreBoard = document.querySelector('.score')
 const moles = document.querySelectorAll('.mole')
 var lastHole; //creating a global variable
 var timeUp = false;
+const startButton = document.querySelector('#start')
+
+startButton.addEventListener('click', startGame())
 
 holes.forEach((hole) => {
     let moleDiv = document.createElement('div')
@@ -48,3 +51,4 @@ function startGame () {
     popUp()
     setTimeout(() => timeUp = true, 10000)
 }
+
