@@ -7,7 +7,8 @@ for(let i = 0; i < 6; i++) {
 
 const holes = document.querySelectorAll('.hole')
 const scoreBoard = document.querySelector('.score')
-const moles = document.querySelectorAll('.mole')
+// const moles = document.querySelectorAll('.mole')
+// const moles = $('.mole')
 var lastHole; //creating a global variable
 var timeUp = false;
 const startButton = document.querySelector('#start')
@@ -55,10 +56,13 @@ function startGame () {
 }
 
 function whack (evt) {
-    if(!evt.isTrusted) return //if someone's cheating and not actually clicking
+    console.log(evt)
+    // if(!evt.isTrusted) return //if someone's cheating and not actually clicking
     score++
     this.classList.remove('up')
     scoreBoard.textContent = score
 }
 
-moles.forEach(mole => mole.addEventListener('click', whack))
+//to add to the scoreboard
+//had to use jquery because i created the 'moles' dynamically
+$('.mole').on('click', whack)
